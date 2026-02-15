@@ -2,13 +2,22 @@
 
 A public repo to contain bootstrapping snippets.
 
-## Git
+
+- This will use [Chezmoi](https://www.chezmoi.io) to manage dotfiles, and continue the rest of the bootstrapping process.
+- Some initialy depenencies are need, e.g. `git` to be able to retrieve the repository, ssh keys for authentication, and
+  sshd for continuing the process remotely.
+
+## Setup
+
+### Dependencies
 
 Install
 
 ```shell
 sudo apt -qq update
-sudo apt -qq install -y git
+sudo apt -qq install -y \
+  git \
+  openssh-server
 ``
 
 Minimum configuration
@@ -18,7 +27,7 @@ git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ```
 
-## SSH key
+### SSH key
 
 Generate public/private key and output to add to GitLab/GitHub:
 
@@ -35,7 +44,7 @@ Add to:
 
 - [GitHub: Add new SSH key](https://github.com/settings/ssh/new)
 
-## Chezmoi
+### Chezmoi
 
 First use see [Quick start - chezmoi](https://www.chezmoi.io/quick-start/)
 
@@ -49,7 +58,8 @@ sh -c "$(wget -qO- get.chezmoi.io)" -- -b $HOME/.local/bin
 export PATH="$PATH:/$HOME/.local/bin"
 ```
 
- 
+## Usage
+
 ```shell
 GITHUB_USERNAME=mikegeeves
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
