@@ -62,5 +62,5 @@ export PATH="$PATH:/$HOME/.local/bin"
 
 ```shell
 GITHUB_USERNAME=mikegeeves
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
+chezmoi init git@github.com:$GITHUB_USERNAME/dotfiles.git
 ```
